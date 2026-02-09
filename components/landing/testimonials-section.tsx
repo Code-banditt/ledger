@@ -2,31 +2,39 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 const testimonials = [
   {
     text: "Ledger = peace of mind. I'm sure some of us know that unsettling feeling when you know you need a Ledger but haven't quite organized yourself to get it sorted.",
     author: "Janet Onagah",
     handle: "@Janet_Oganah",
-    image: "/imgs/janet.png", // Path to your extracted image
+    image: "https://randomuser.me/api/portraits/women/32.jpg",
   },
   {
     text: "I got hacked in January and lost 1000s worth of NFTs. I felt disgusted, lost, and willing to quit. Until my friend told me he's ordering a Ledger.",
     author: "PrimeNic.eth",
     handle: "@primenic_eth",
-    image: "/imgs/primenic.png",
+    image: "https://randomuser.me/api/portraits/men/44.jpg",
   },
   {
     text: "I use multiple Ledgers. Different colours = different uses. Public Wallet. Never touch long term storage. Day to day fund holdings. A back up just in case.",
     author: "winny.eth",
     handle: "@winnyeth",
-    image: "/imgs/winny.png",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
+  },
+  {
+    text: "The security provided by the Stax is unmatched. Being able to see my NFTs directly on the device gives me total confidence.",
+    author: "CryptoGhost",
+    handle: "@ghost_nft",
+    image: "https://randomuser.me/api/portraits/men/85.jpg",
   },
 ];
+
 export function TestimonialsSection() {
   return (
-    <section className="px-6 py-20 bg-black">
+    <section className="px-6 py-24 bg-black overflow-hidden">
       <div className="mx-auto max-w-7xl">
-        {/* Header with Nav Buttons */}
+        {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-tight">
             Testimonials
@@ -41,37 +49,44 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Carousel */}
-        <div className="flex gap-6 overflow-x-auto no-scrollbar pb-4 snap-x snap-mandatory">
-          {testimonials.map((t, index) => (
-            <div
-              key={index}
-              className="snap-start min-w-[85vw] md:min-w-[400px] bg-transparent p-8 flex flex-col border border-white/10 h-[380px]"
-            >
-              <p className="text-lg lg:text-xl text-white leading-relaxed mb-8 flex-1">
-                &ldquo;{t.text}&rdquo;
-              </p>
+        {/* Carousel Wrapper */}
+        <div className="relative">
+          {/* Subtle Fade on the right to blend the peek-a-boo card */}
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-              <div className="flex items-center gap-4">
-                {/* PROFILE PICTURE START */}
-                <div className="relative h-12 w-12 rounded-full overflow-hidden border border-white/20 bg-neutral-800">
-                  <Image
-                    src={t.image}
-                    alt={t.author}
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </div>
-                {/* PROFILE PICTURE END */}
+          {/* The Scroll Container */}
+          <div className="flex gap-6 overflow-x-auto no-scrollbar pb-8 snap-x snap-mandatory">
+            {testimonials.map((t, index) => (
+              <div
+                key={index}
+                className="snap-start min-w-[60%] md:min-w-[28.5%] bg-transparent p-10 flex flex-col border border-white/40 h-[300px] transition-all group"
+              >
+                <p className="text-lg lg:text-base text-white leading-8 flex-1">
+                  “{t.text}”
+                </p>
 
-                <div>
-                  <p className="text-sm font-bold text-white">{t.author}</p>
-                  <p className="text-xs text-gray-500 font-mono">{t.handle}</p>
+                <div className="flex items-center gap-4 mt-6">
+                  <div className="relative h-12 w-12 rounded-full overflow-hidden border border-white/20">
+                    <img
+                      src={t.image}
+                      alt={t.author}
+                      className="object-cover h-full w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-base font-bold text-white">{t.author}</p>
+                    <p className="text-xs text-gray-500 font-mono">
+                      {t.handle}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+
+            {/* Spacer so the last card doesn't stretch */}
+            <div className="min-w-[10%] shrink-0" />
+          </div>
         </div>
       </div>
     </section>

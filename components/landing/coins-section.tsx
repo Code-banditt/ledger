@@ -22,13 +22,12 @@ const coins = [
 export function CoinsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Double the coins for seamless infinite loop
+  // Triple the coins for seamless infinite loop
   const doubledCoins = [...coins, ...coins, ...coins];
 
   return (
     <section className="bg-black text-white py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Top Row */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
@@ -45,16 +44,16 @@ export function CoinsSection() {
           </button>
         </div>
 
-        {/* Infinite Carousel */}
+        {/* Carousel Container */}
         <div className="relative mt-10">
-          {/* Edge Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+          {/* FIX: Increased width and added 'via-black/80' for a smoother fade into deep black */}
+          <div className="absolute -left-36 top-0 bottom-0 w-2/4 bg-gradient-to-r from-black via-black/80 to-transparent z-20 pointer-events-none" />
+          <div className="absolute -right-36 top-0 bottom-0 w-2/4 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none" />
 
           <motion.div
             className="flex gap-10 items-center"
             animate={{
-              x: [0, -1400], // Adjust this value based on total width
+              x: [0, -1400],
             }}
             transition={{
               x: {
@@ -74,12 +73,10 @@ export function CoinsSection() {
                   className="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-[#111] border border-white/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:border-white/30 overflow-hidden"
                   style={{ boxShadow: `0 0 20px ${coin.color}20` }}
                 >
-                  {/* REAL CRYPTO ICONS FROM CDN */}
                   <img
                     src={`https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/${coin.symbol}.png`}
                     alt={coin.name}
                     className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
-                    // Fallback for missing icons
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =
                         `https://ui-avatars.com/api/?name=${coin.symbol}&background=333&color=fff`;
@@ -87,7 +84,6 @@ export function CoinsSection() {
                   />
                 </div>
 
-                {/* Subtle Label below icon */}
                 <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-widest text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
                   {coin.symbol}
                 </span>

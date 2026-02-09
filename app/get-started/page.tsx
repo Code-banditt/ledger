@@ -4,7 +4,7 @@ import { LedgerLogo } from "@/components/ledger-logo";
 
 export default function GetStartedPage() {
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-black">
+    <div className="flex h-screen w-full overflow-hidden bg-[#121212]">
       {/* Left panel: Fixed Sidebar */}
       <div className="flex h-full w-full max-w-sm flex-col justify-between bg-black-[#111] p-8 lg:p-12 z-10 border-r border-white/5">
         <div>

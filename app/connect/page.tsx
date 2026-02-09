@@ -10,7 +10,7 @@ export default function ConnectPage() {
   const [wireless, setWireless] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-[#121212]">
       {/* Left panel - lavender */}
       <div className="hidden w-64 flex-col items-center justify-between bg-lavender p-8 lg:flex">
         <LedgerLogo className="[&_span]:text-[#111]" />
@@ -25,7 +25,7 @@ export default function ConnectPage() {
       </div>
 
       {/* Right panel - main content */}
-      <div className="flex flex-1 flex-col bg-background">
+      <div className="flex flex-1 flex-col bg-[#121212]">
         {/* Progress bar */}
         <div className="flex items-center justify-center px-8 pt-6">
           <div className="flex w-full max-w-2xl items-center gap-2">
